@@ -2,7 +2,8 @@ import React,{ useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 import styles from './styles';
 
-import api from '../../services/api'
+import api from '../../services/api';
+import { chave_key } from '../../../chave_key';
 
 export default function Home(){
 
@@ -13,7 +14,7 @@ export default function Home(){
     const [moedaB, setMoedaB] = useState('BRL');
 
     async function converter(){
-        await api.get(`/convert?q=${moedaA}_${moedaB}&compact=ultra&apiKey=`)
+        await api.get(`/convert?q=${moedaA}_${moedaB}&compact=ultra&apiKey=${chave_key}`)
             .then(response => {
                 let cotacao = response.data.USD_BRL;
 
